@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
 const router = express.Router();
 
 //serve static files in express
