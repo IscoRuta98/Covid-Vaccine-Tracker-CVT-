@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>COVID-19 Tracker System</title>
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <h1>COVID-19 Vaccine Tracker System</h1>
+  <body>
+    <h2>Welcome to the COVID-19 Vaccine Tracker System</h2>
+    <img src="images/covid-vaccine.jpg" alt="My test image">
+    <p>Why you should get vaccinated:</p>
+   
+    <h3>Blockchain Setup</h3>
+    <button class="enableEthereumButton">Enable Ethereum</button> 
+    <h2>Account: <span class="showAccount"></span></h2>
+    <ul>
+      <li>All COVID-19 vaccines currently available in South Africa have been shown to be highly effective at preventing COVID-19.</li>
+      <li>Based on what we know about vaccines for other diseases and early data from clinical trials, experts believe that getting a COVID-19 vaccine may also help keep you from getting seriously ill even if you do get COVID-19.</li>
+      <li>All COVID-19 vaccines that are in development are being carefully evaluated in clinical trials and will be authorized or approved only if they make it substantially less likely you’ll get COVID-19.</li>
+    </ul>
+    
+    <p>Please fill in the following <strong>if</strong> you have been vaccinated:</p>
+    <form name="form1" method="post" onsubmit="return processFormSubmission();">
+      <div class="mb-3">
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" name="fname" class="form-control" id="fname" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="sname" class="form-label">Surname</label>
+        <input type="text" name="lname" class="form-control" id="sname" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="date" class="form-label">Date of vaccination</label>
+        <input type="date" name="vdate" class="form-control" id="date_var" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="type" class="form-label">Type of Vaccine</label>
+        <input type="text" name="vname" class="form-control" id="type_var" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Place of vaccination</label>
+        <input type="text" name="vplace" class="form-control" id="location" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h2>HTML Table</h2>
+
+    <table>
+      <tr>
+        <th>First Name</th>
+        <th>Surname</th>
+        <th>Date of vaccination</th>
+        <th>Type of Vaccine</th>
+        <th>Place of vaccination</th>
+      </tr>
+      <tr>
+        <td id = "f"></td>
+        <td id = "s"></td>
+        <td id = "d"></td>
+        <td id = "t"></td>
+        <td id = "l"></td>
+      </tr>
+      </table>
+
+      <script src="scripts/form-function.js"></script>
+      <script src="scripts/cvt_blockchain.js"></script>
+      <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
+      charset="utf-8" type="text/javascript"></script>
+      <h2><%= status %></h1>
+
+        <ul>
+          <li>Item one</li>
+          <li>Item two</li>
+          <li>Item three</li>
+          <li>Item four</li>
+          <li>Item five</li>
+        </ul>  
+      
+        <br />
+      
+        <ol>
+          <li>Item one</li>
+          <li>Item two</li>
+          <li>Item three</li>
+          <li>Item four</li>
+          <li>Item five</li>
+        </ol>  
+      
+          <ul>
+            <% if ( typeof(users) =="undefined") { %>
+              <li>No data</li> 
+            <% } else { %> 
+              <% for (let i = 0; i < users.length; i++) { %>
+                <li><%= users[i] %> - <%= users[i].Name %>
+                   - <%= users[i].Surname %> 
+                   - <%= users[i].VaccineDate %>
+                   - <%= users[i].VaccineName %>
+                   - <%= users[i].VaccinePlace %>
+                  </li>
+                <a  href="javascript:void(0);" class="btn btn-xs btn-success blockchain addVaccinationToBlockchainBtn"
+                          data-fname="<%= users[i].Name%>"
+                          data-lname="<%=users[i].Surname%>"
+                          data-date="<%=users[i].VaccineDate%>"
+                          data-type_of_v="<%=users[i].VaccineName%>"
+                          data-place_of_v="<%=users[i].VaccinePlace%>">
+                          Add to Blockchain</a> 
+              <% } %>
+             <% } %>
+          
+          </ul>
+          
+      <br>
+      
+        
+      
+  </body>
+</html>
